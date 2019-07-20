@@ -5,6 +5,8 @@ const getAllProducts = gql`
 		products {
 			name
 			url
+			description
+			logo
 			id
 			tags
 		}

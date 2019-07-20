@@ -24,4 +24,9 @@ export default createGlobalStyle`
     font-weight: 400;
     color: #745fb5;	
 	}
+
+	hr {
+		opacity: 0.2;
+		margin: 15px 0;
+	}
 `;

@@ -6,22 +6,69 @@ const Wrapper = styled.div`
 	width: 100%;
 	background: white;
 	padding: 20px 40px;
+	border-radius: 3.5px;
+	box-shadow: 0 6px 8px rgba(102, 119, 136, 0.03),
+		0 1px 2px rgba(102, 119, 136, 0.3);
 `;
 
 const ProductName = styled.a`
-	text-transform: uppercase;
+	text-transform: capitalize;
+	font-size: 25px;
+	margin: 5px 0;
+	padding: 0;
+`;
+
+const ProductLogo = styled.img`
+	width: 100px;
+	height: 100px;
+	object-fit: contain;
+`;
+
+const Content = styled.div`
+	display: flex;
+	justify-content: space-between;
+`;
+
+const TextWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
+
+const Tags = styled.span`
+	margin: 0 7.5px 0 0;
+	background: #77dab2;
+	padding: 4px 7px;
+	border-radius: 3.5px;
+	box-shadow: 0 6px 8px rgba(102, 119, 136, 0.03),
+		0 1px 2px rgba(102, 119, 136, 0.3);
+`;
+
+const Url = styled.a`
+	font-size: 10px;
+	margin: 10px 0 0 0;
 `;
 
 const Product = ({ product }) => {
 	console.log(product);
 	return (
 		<Wrapper>
-			<ProductName target="_blank" rel="noopener noreferrer" href={product.url}>
-				{product.name}
-			</ProductName>
-			<span>{product.url}</span>
+			<Content>
+				<TextWrapper>
+					<ProductName
+						target="_blank"
+						rel="noopener noreferrer"
+						href={product.url}
+					>
+						{product.name}
+					</ProductName>
+					<div>{product.description}</div>
+					<Url href={product.url}>{product.url}</Url>
+				</TextWrapper>
+				<ProductLogo src={product.logo} />
+			</Content>
+			<hr />
 			{product.tags.map((tag, i) => (
-				<span key={i}>{tag}</span>
+				<Tags key={i}>{tag}</Tags>
 			))}
 		</Wrapper>
 	);

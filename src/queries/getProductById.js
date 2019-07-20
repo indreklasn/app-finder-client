@@ -5,6 +5,8 @@ const getProductById = gql`
 		getProductById(id: $id) {
 			name
 			url
+			description
+			logo
 			id
 			tags
 		}
