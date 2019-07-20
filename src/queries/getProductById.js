@@ -1,8 +1,8 @@
 import { gql } from 'apollo-boost';
 
-const getProductById = productId => gql`
-	query {
-		getProductById(id: ${productId}) {
+const getProductById = gql`
+	query($id: ID!) {
+		getProductById(id: $id) {
 			name
 			url
 			id
