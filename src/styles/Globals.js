@@ -13,4 +13,15 @@ export default createGlobalStyle`
     color: #345;
     overflow-x: hidden;
 	}
+
+	a, u {
+    text-decoration: none;
+	}
+
+	a {
+    margin: 16px 0;
+    padding: 0 0 16px;
+    font-weight: 400;
+    color: #745fb5;	
+	}
 `;
