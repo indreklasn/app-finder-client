@@ -1,0 +1,21 @@
+{
+  "extends": ["wesbos"],
+  "rules": {
+    "no-shadow": 0,
+    "react/prop-types": [
+      2,
+      {
+        "ignore": ["children"]
+      }
+    ],
+    "react/display-name": false,
+    "import/no-cycle": false
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules", "src/"]
+      }
+    }
+  }
+}
