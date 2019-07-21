@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Query } from 'react-apollo';
-import { getAllProducts, searchProducts } from 'queries';
+import { searchProducts } from 'queries';
 import styled from 'styled-components';
-import Product from './Product';
+import { ShowAllProducts, Product } from '.';
 
 const Form = styled.form`
 	width: 100%;
@@ -53,19 +53,7 @@ export default () => {
 						if (loading) return <span>...loading</span>;
 						if (error) return <span>{error}</span>;
 						if (data.searchProduct.length === 0) {
-							return (
-								<Query query={getAllProducts}>
-									{({ loading, error, data }) => {
-										console.log(data);
-										if (loading) return null;
-										if (error) return `${error}`;
-
-										return data.products.map((product, i) => (
-											<Product key={i} product={product} />
-										));
-									}}
-								</Query>
-							);
+							return <ShowAllProducts />;
 						}
 						if (data.searchProduct.length >= 0) {
 							return data.searchProduct.map((product, i) => (
