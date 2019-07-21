@@ -1,4 +1,5 @@
 import getProductById from './getProductById';
 import getAllProducts from './getAllProducts';
+import searchProducts from './searchProducts';
 
-export { getProductById, getAllProducts };
+export { getProductById, getAllProducts, searchProducts };

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Query } from 'react-apollo';
-import { getAllProducts, searchProducts } from 'queries';
 import styled from 'styled-components';
-import Product from './Product';
+import { searchProducts } from 'queries';
+import { Query } from 'react-apollo';
+import { Product } from '../home';
 
 const Form = styled.form`
 	width: 100%;
@@ -32,10 +32,13 @@ const Input = styled.input`
 	font-size: calc(19px + 0 * ((100vw - 768px) / 512));
 `;
 
-export default () => {
+const SearchContainer = () => {
 	const [search, setSearch] = useState('');
 	console.log(search);
 
+	const handleSearch = async () => {
+		console.log(search);
+	};
 	return (
 		<>
 			<Form>
@@ -46,35 +49,24 @@ export default () => {
 						placeholder="Search..."
 					/>
 				</Label>
+				<button type="button" onClick={() => handleSearch()}>
+					search
+				</button>
 			</Form>
 			<div>
 				<Query query={searchProducts} variables={{ name: search }}>
 					{({ data, loading, error }) => {
 						if (loading) return <span>...loading</span>;
 						if (error) return <span>{error}</span>;
-						if (data.searchProduct.length === 0) {
-							return (
-								<Query query={getAllProducts}>
-									{({ loading, error, data }) => {
-										console.log(data);
-										if (loading) return null;
-										if (error) return `${error}`;
-
-										return data.products.map((product, i) => (
-											<Product key={i} product={product} />
-										));
-									}}
-								</Query>
-							);
-						}
-						if (data.searchProduct.length >= 0) {
+						if (data.searchProduct.length >= 0)
 							return data.searchProduct.map((product, i) => (
 								<Product key={i} product={product} />
 							));
-						}
 					}}
 				</Query>
 			</div>
 		</>
 	);
 };
+
+export default SearchContainer;

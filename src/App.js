@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { HomeContainer } from './views/home';
 import { NotFoundContainer } from './views/not-found';
 import { SubmitContainer } from './views/submit';
+import { SearchContainer } from './views/search';
 
 const Layout = styled.div`
 	max-width: 740px;
@@ -19,7 +20,7 @@ function App() {
 			<Router>
 				<HomeContainer path="/"></HomeContainer>
 				<SubmitContainer path="/submit"></SubmitContainer>
-				<div path="/lol">lol</div>
+				<SearchContainer path="/search"></SearchContainer>
 				<NotFoundContainer default></NotFoundContainer>
 			</Router>
 		</Layout>

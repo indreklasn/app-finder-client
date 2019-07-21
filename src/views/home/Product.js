@@ -5,10 +5,11 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
 	width: 100%;
 	background: white;
-	padding: 20px 40px;
+	padding: 10px 20px 20px 20px;
 	border-radius: 3.5px;
 	box-shadow: 0 6px 8px rgba(102, 119, 136, 0.03),
 		0 1px 2px rgba(102, 119, 136, 0.3);
+	margin: 25px 0;
 `;
 
 const ProductName = styled.a`
@@ -19,8 +20,8 @@ const ProductName = styled.a`
 `;
 
 const ProductLogo = styled.img`
-	width: 100px;
-	height: 100px;
+	width: 50px;
+	height: 50px;
 	object-fit: contain;
 `;
 
@@ -48,31 +49,28 @@ const Url = styled.a`
 	margin: 10px 0 0 0;
 `;
 
-const Product = ({ product }) => {
-	console.log(product);
-	return (
-		<Wrapper>
-			<Content>
-				<TextWrapper>
-					<ProductName
-						target="_blank"
-						rel="noopener noreferrer"
-						href={product.url}
-					>
-						{product.name}
-					</ProductName>
-					<div>{product.description}</div>
-					<Url href={product.url}>{product.url}</Url>
-				</TextWrapper>
-				<ProductLogo src={product.logo} />
-			</Content>
-			<hr />
-			{product.tags.map((tag, i) => (
-				<Tags key={i}>{tag}</Tags>
-			))}
-		</Wrapper>
-	);
-};
+const Product = ({ product }) => (
+	<Wrapper>
+		<Content>
+			<TextWrapper>
+				<ProductName
+					target="_blank"
+					rel="noopener noreferrer"
+					href={product.url}
+				>
+					{product.name}
+				</ProductName>
+				<div>{product.description}</div>
+				<Url href={product.url}>{product.url}</Url>
+			</TextWrapper>
+			<ProductLogo src={product.logo} />
+		</Content>
+		<hr />
+		{product.tags.map((tag, i) => (
+			<Tags key={i}>{tag}</Tags>
+		))}
+	</Wrapper>
+);
 
 Product.propTypes = {
 	product: object,
