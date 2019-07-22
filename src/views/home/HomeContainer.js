@@ -52,14 +52,16 @@ export default () => {
 					{({ data, loading, error }) => {
 						if (loading) return <span>...loading</span>;
 						if (error) return <span>{error}</span>;
-						if (data.searchProduct.length === 0) {
+						if (data.searchProduct && data.searchProduct.length === 0) {
 							return <ShowAllProducts />;
 						}
-						if (data.searchProduct.length >= 0) {
+						if (data.searchProduct && data.searchProduct.length >= 0) {
 							return data.searchProduct.map((product, i) => (
 								<Product key={i} product={product} />
 							));
 						}
+						
+						return <span>found nothing...</span>
 					}}
 				</Query>
 			</div>
