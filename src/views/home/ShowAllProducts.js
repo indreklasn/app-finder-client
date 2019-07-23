@@ -9,9 +9,10 @@ const ShowAllProducts = () => (
 			if (loading) return null;
 			if (error) return `${error}`;
 
-			return data.products.map((product, i) => (
-				<Product key={i} product={product} />
-			));
+			return (
+				data.products &&
+				data.products.map((product, i) => <Product key={i} product={product} />)
+			);
 		}}
 	</Query>
 );

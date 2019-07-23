@@ -18,6 +18,10 @@ export default createGlobalStyle`
     text-decoration: none;
 	}
 
+	ul {
+		list-style-type: none;
+	}
+
 	a {
     margin: 16px 0;
     padding: 0 0 16px;

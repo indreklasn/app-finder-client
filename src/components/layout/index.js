@@ -1,3 +1,4 @@
 import Header from './Header';
+import Slogan from './Slogan';
 
-export { Header };
+export { Header, Slogan };
