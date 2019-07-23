@@ -6,7 +6,7 @@ import Product from './Product';
 const ShowAllProducts = () => (
 	<Query query={getAllProducts}>
 		{({ loading, error, data }) => {
-			if (loading) return null;
+			if (loading) return <span>...loading</span>;
 			if (error) return `${error}`;
 
 			return (

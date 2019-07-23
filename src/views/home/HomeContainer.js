@@ -34,10 +34,10 @@ const Input = styled.input`
 
 export default () => {
 	const [search, setSearch] = useState('');
-	console.log(search);
 
 	return (
 		<>
+			<h1>Search for your favourite app</h1>
 			<Form>
 				<Label>
 					<Input
@@ -47,9 +47,27 @@ export default () => {
 					/>
 				</Label>
 			</Form>
-			<div>
-				<ShowAllProducts></ShowAllProducts>
-			</div>
+			<Query query={searchProducts} variables={{ name: search }}>
+				{({ loading, error, data }) => {
+					if (loading) return <span>...loading</span>;
+					if (error) return `${error}`;
+					if (!data || !data.searchProduct || data.searchProduct.length === 0) {
+						return (
+							<>
+								<div>nothing found, showing all results.</div>
+								<ShowAllProducts></ShowAllProducts>
+							</>
+						);
+					}
+
+					return (
+						data.searchProduct &&
+						data.searchProduct.map((product, i) => (
+							<Product key={i} product={product} />
+						))
+					);
+				}}
+			</Query>
 		</>
 	);
 };

@@ -2,7 +2,6 @@ import React from 'react';
 import { Router } from '@reach/router';
 import { Globals } from 'styles';
 import styled from 'styled-components';
-import { Header, Slogan } from './components/layout';
 import { HomeContainer } from './views/home';
 import { NotFoundContainer } from './views/not-found';
 import { SubmitContainer } from './views/submit';
@@ -16,19 +15,15 @@ const Layout = styled.div`
 
 function App() {
 	return (
-		<>
+		<Layout>
 			<Globals></Globals>
-			<Header></Header>
-			<Slogan></Slogan>
-			<Layout>
-				<Router>
-					<HomeContainer path="/"></HomeContainer>
-					<SubmitContainer path="/submit"></SubmitContainer>
-					<SearchContainer path="/search"></SearchContainer>
-					<NotFoundContainer default></NotFoundContainer>
-				</Router>
-			</Layout>
-		</>
+			<Router>
+				<HomeContainer path="/"></HomeContainer>
+				<SubmitContainer path="/submit"></SubmitContainer>
+				<SearchContainer path="/search"></SearchContainer>
+				<NotFoundContainer default></NotFoundContainer>
+			</Router>
+		</Layout>
 	);
 }
 
